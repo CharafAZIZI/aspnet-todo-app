@@ -1,0 +1,38 @@
+﻿@model List<ToDo.ViewModels.TodoListVM>
+
+<h2>Liste des Todos (@ViewBag.count)</h2><br />
+
+<div style="display: flex;gap:50px;margin: 30px auto;">
+    <a href="/Todos/Add" class="btn btn-primary btn-lg">Ajouter un Todo</a>
+    <a href="/Auth/Logout" class="btn btn-danger btn-lg">Se Déconnecter</a>
+</div>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Libelle</th>
+            <th>Description</th>
+            <th>Date Limite</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Libelle</td>
+                <td>@item.Description</td>
+                <td>@item.DateLimite</td>
+                <td>@item.Statut</td>
+                <td>
+                    <a class="btn btn-warning btn-sm" href="/Todos/Edit/@item.Id">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="/Todos/Delete/@item.Id">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
